@@ -1,0 +1,63 @@
+---
+---
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md">
+    <div class="flex justify-between items-center w-full px-8 py-6 max-w-[1920px] mx-auto transition-all duration-500 ease-in-out">
+        <a href="/" class="font-serif text-2xl tracking-tighter font-bold text-stone-950 dark:text-stone-50">
+            HM Pro Arquitectura
+        </a>
+        <div class="hidden md:flex items-center gap-12 font-serif tracking-tight text-lg uppercase">
+            <a class="text-stone-400 hover:text-stone-950 dark:text-stone-600 dark:hover:text-stone-300 transition-colors duration-300" href="/proyectos">Proyectos</a>
+            <a class="text-stone-400 hover:text-stone-950 dark:text-stone-600 dark:hover:text-stone-300 transition-colors duration-300" href="/studio">Estudio</a>
+            <a class="text-stone-400 hover:text-stone-950 dark:text-stone-600 dark:hover:text-stone-300 transition-colors duration-300" href="/#philosophy">Filosofía</a>
+            <a class="text-stone-400 hover:text-stone-950 dark:text-stone-600 dark:hover:text-stone-300 transition-colors duration-300" href="/contacto">Contacto</a>
+        </div>
+        <div class="flex items-center gap-4 text-stone-950 dark:text-stone-50">
+            <span class="material-symbols-outlined cursor-pointer" id="menu-btn" data-icon="menu">menu</span>
+        </div>
+    </div>
+</nav>
+
+<!-- SideNavBar (Hidden by default, triggered by Menu) -->
+<aside class="h-full w-80 fixed right-0 top-0 z-[60] bg-stone-50 dark:bg-stone-950 flex flex-col p-12 border-l border-stone-200 dark:border-stone-800 shadow-2xl transform translate-x-full hidden transition-transform duration-500 ease-in-out" id="sideNav">
+    <div class="flex justify-between items-center mb-16">
+        <span class="font-serif text-3xl font-bold text-stone-950 dark:text-stone-50">HM Pro</span>
+        <button class="material-symbols-outlined text-stone-950 dark:text-stone-50" id="close-btn">close</button>
+    </div>
+    <nav class="flex flex-col gap-8 font-mono uppercase tracking-[0.2em] text-xs">
+        <a class="text-stone-400 hover:text-stone-950 dark:text-stone-600 dark:hover:text-stone-300 hover:translate-x-2 transition-transform duration-300" href="/proyectos">Proyectos Seleccionados</a>
+        <a class="text-stone-400 hover:text-stone-950 dark:text-stone-600 dark:hover:text-stone-300 hover:translate-x-2 transition-transform duration-300" href="/studio">El Estudio</a>
+        <a class="text-stone-400 hover:text-stone-950 dark:text-stone-600 dark:hover:text-stone-300 hover:translate-x-2 transition-transform duration-300" href="/#philosophy">Filosofía</a>
+        <a class="text-stone-400 hover:text-stone-950 dark:text-stone-600 dark:hover:text-stone-300 hover:translate-x-2 transition-transform duration-300" href="/contacto">Contacto</a>
+    </nav>
+    <div class="mt-auto pt-12">
+        <a href="/contacto" class="block text-center w-full py-4 bg-primary text-on-primary font-mono text-[10px] uppercase tracking-widest hover:bg-tertiary transition-colors">Consultar Ahora</a>
+    </div>
+</aside>
+<script>
+    // Se asegura de adjuntar el evento a cada navegación para que funcione SPA u recarga común
+    function initNav() {
+        const menuBtn = document.getElementById('menu-btn');
+        const closeBtn = document.getElementById('close-btn');
+        const sideNav = document.getElementById('sideNav');
+
+        if (menuBtn && sideNav && closeBtn) {
+            menuBtn.addEventListener('click', () => {
+                sideNav.classList.remove('hidden');
+                setTimeout(() => {
+                    sideNav.classList.remove('translate-x-full');
+                }, 10);
+            });
+
+            closeBtn.addEventListener('click', () => {
+                sideNav.classList.add('translate-x-full');
+                setTimeout(() => {
+                    sideNav.classList.add('hidden');
+                }, 500);
+            });
+        }
+    }
+    
+    // Support for view transitions if they exist in Astro
+    document.addEventListener("astro:page-load", initNav);
+    document.addEventListener("DOMContentLoaded", initNav);
+</script>
