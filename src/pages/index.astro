@@ -1,5 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+const designImages = [
+    { src: "/Fase de Diseno/fase1.jpeg", span: "md:col-span-8" },
+    { src: "/Fase de Diseno/fase2.jpeg", span: "md:col-span-4" },
+    { src: "/Fase de Diseno/fase3.jpeg", span: "md:col-span-4" },
+    { src: "/Fase de Diseno/fase4.jpeg", span: "md:col-span-4" },
+    { src: "/Fase de Diseno/fase5.jpeg", span: "md:col-span-4" },
+    { src: "/Fase de Diseno/fase6.jpeg", span: "md:col-span-6" },
+    { src: "/Fase de Diseno/fase7.jpeg", span: "md:col-span-6" },
+];
 ---
 
 <Layout title="HM Pro Arquitectura | Inicio">
@@ -52,11 +62,6 @@ import Layout from "../layouts/Layout.astro";
 					precisión geométrica.
 				</p>
 			</div>
-			<!-- <div
-					class="font-label text-xs uppercase tracking-widest border-b border-outline pb-2"
-				>
-					Filtro: Todos los Proyectos
-				</div> -->
 		</div>
 		<div class="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-24">
 			<!-- Project 1 -->
@@ -166,21 +171,11 @@ import Layout from "../layouts/Layout.astro";
 			</p>
 		</div>
 		<div class="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-12">
-			<div class="md:col-span-8 overflow-hidden">
-				<img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105" src="/Fase de Diseno/fase1.jpeg" />
-			</div>
-			<div class="md:col-span-4 overflow-hidden">
-				<img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105" src="/Fase de Diseno/fase2.jpeg" />
-			</div>
-			<div class="md:col-span-4 overflow-hidden">
-				<img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105" src="/Fase de Diseno/fase3.jpeg" />
-			</div>
-			<div class="md:col-span-4 overflow-hidden">
-				<img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105" src="/Fase de Diseno/fase4.jpeg" />
-			</div>
-			<div class="md:col-span-4 overflow-hidden">
-				<img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105" src="/Fase de Diseno/fase5.jpeg" />
-			</div>
+			{designImages.map((image) => (
+				<div class={`${image.span} overflow-hidden`}>
+					<img class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 hover:scale-105" src={image.src} alt="Fase de diseño" loading="lazy" />
+				</div>
+			))}
 		</div>
 	</section>
 	<!-- Technical Services Section -->
