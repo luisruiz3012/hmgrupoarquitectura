@@ -1,0 +1,65 @@
+---
+const team = [
+	{
+		name: "Héctor Manolo X. Rabay",
+		role: "Arquitecto - Evaluador Ambiental - Profesional Agrimensor",
+		credential: "Colegiado: 7,198",
+		image: "/Equipo/Hector Manolo.jpeg",
+	},
+	{
+		name: "Kevin Josué",
+		role: "Logística y Administración",
+		image: "/Equipo/Kevin Josue.jpeg",
+	},
+	{
+		name: "Olga Leticia",
+		role: "Administración y Logística Arquitectónica",
+		image: "/Equipo/Olga Leticia.jpeg",
+	},
+	{
+		name: "Roxana Aracely",
+		role: "Dibujo y Proyección Arquitectónica",
+		image: "/Equipo/Roxana Aracely.jpeg",
+	},
+];
+---
+
+<section class="py-32 px-8 lg:px-24 bg-surface" id="team">
+	<div class="max-w-xl mb-24">
+		<span class="font-label text-xs uppercase tracking-[0.5em] text-tertiary mb-4 block">Nuestro Equipo</span>
+		<h2 class="font-headline text-4xl md:text-6xl mb-6">
+			Talento y Experiencia
+		</h2>
+		<p class="text-on-surface-variant font-body leading-relaxed">
+			Contamos con un equipo multidisciplinario dedicado a la excelencia en cada fase de su proyecto.
+		</p>
+	</div>
+
+	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12">
+		{
+			team.map((member) => (
+				<div class="group">
+					<div class="aspect-[3/4] overflow-hidden mb-6 bg-surface-container-low">
+						<img
+							src={member.image}
+							alt={member.name}
+							class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+							loading="lazy"
+						/>
+					</div>
+					<div class="space-y-2">
+						<h3 class="font-headline text-xl text-on-surface">{member.name}</h3>
+						<p class="font-label text-xs uppercase tracking-wider text-primary">
+							{member.role}
+						</p>
+						{member.credential && (
+							<p class="font-body text-sm text-on-surface-variant">
+								{member.credential}
+							</p>
+						)}
+					</div>
+				</div>
+			))
+		}
+	</div>
+</section>
